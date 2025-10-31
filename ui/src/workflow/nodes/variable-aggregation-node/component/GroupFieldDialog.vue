@@ -1,6 +1,6 @@
 <template>
   <el-dialog
-    :title="isEdit ? $t('common.param.editParam') : $t('common.param.addParam')"
+    :title="isEdit ? $t('views.applicationWorkflow.nodes.variableAggregationNode.editGroup') : $t('views.applicationWorkflow.nodes.variableAggregationNode.addGroup')"
     v-model="dialogVisible"
     :close-on-click-modal="false"
     :close-on-press-escape="false"
@@ -16,23 +16,19 @@
       require-asterisk-position="right"
     >
       <el-form-item
-        :label="$t('dynamicsForm.paramForm.field.label')"
-        :required="true"
+        :label="$t('common.variable')"
         prop="field"
-        :rules="rules.field"
       >
         <el-input
           v-model="form.field"
           :maxlength="64"
-          :placeholder="$t('dynamicsForm.paramForm.field.placeholder')"
+          :placeholder="$t('views.applicationWorkflow.variable.inputPlaceholder')"
           show-word-limit
         />
       </el-form-item>
       <el-form-item
         :label="$t('dynamicsForm.paramForm.name.label')"
-        :required="true"
         prop="label"
-        :rules="rules.label"
       >
         <el-input
           v-model="form.label"
@@ -70,10 +66,10 @@ const form = ref<any>({
 
 const rules = reactive({
   label: [
-    { required: true, message: t('dynamicsForm.paramForm.name.requiredMessage'), trigger: 'blur' },
+    { required: true, message: t('dynamicsForm.paramForm.name.placeholder'), trigger: 'blur' },
   ],
   field: [
-    { required: true, message: t('dynamicsForm.paramForm.field.requiredMessage'), trigger: 'blur' },
+    { required: true, message: t('views.applicationWorkflow.variable.inputPlaceholder'), trigger: 'blur' },
     {
       pattern: /^[a-zA-Z0-9_]+$/,
       message: t('dynamicsForm.paramForm.field.requiredMessage2'),
